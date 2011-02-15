@@ -1,0 +1,43 @@
+/*if you just want to adjust the size of the stage and the thumbnails, you can do so by editing the following lines: */
+.pika-thumbs li{width: 110px; height:65px;}
+.pika-image {width: 500px;}
+
+
+body{font-family:Helvetica, sans-serif;text-align:center;}
+a{color:white;}
+.pikachoose {width: 820px; margin: 0 auto;position:relative;}
+.pika-image {position: absolute;left:220px;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px;}
+	
+	/*if you change the padding on pika-image you must adjust the top left of this to match! */
+	.pika-image .animation, .pika-image .main-image {position: absolute; top: 10px; left: 10px;}
+	.pika-image .animation {display: none;z-index:2;}
+	.pika-image img {border:0;}
+
+.pika-image .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; 
+			color: #fafafa; padding: 10px; text-align: right; bottom: 50px; right: 10px;}
+	.pika-image .caption p {padding: 0; margin: 0; line-height: 14px;}
+
+.pika-imgnav a {position: absolute; text-indent: -5000px; display: block;z-index:3;}
+	.pika-imgnav a.previous {background: url(prev.png) no-repeat left 45%; height: 100%; width: 50px; top: 10px; left: 10px;cursor:pointer;}
+	.pika-imgnav a.next {background: url(next.png) no-repeat right 45%; height: 100%; width: 50px; top: 10px; right: 10px;cursor:pointer;}
+	.pika-imgnav a.play {background: url(play.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display: none;cursor:pointer;}
+	.pika-imgnav a.pause {background: url(pause.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display:none;cursor:pointer;}
+
+.pika-textnav {overflow: hidden; margin: 10px 0 0 0;}
+.pika-textnav a {font-size: 12px; text-decoration: none; color: #333; padding: 4px;}
+	.pika-textnav a.previous {float: left; width: auto; display: block;}
+	.pika-textnav a.next {float: right; width: auto; display: block;}
+	
+.pika-thumbs {margin: 10px 0 0 17px; padding: 0; overflow: hidden;}
+	.pika-thumbs li {float: left; list-style-type: none;padding: 3px; margin: 0 5px; background: #fafafa; border: 1px solid #e5e5e5; cursor: pointer;}
+		.pika-thumbs li:last {margin: 0;}
+		.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: center; overflow: hidden;}
+
+/*for the tool tips*/
+.clip span{background-color:black;position:absolute;top:5px;left:5px;display:block;}
+		
+/* jCarousel Styles */
+/*if you're not using the carousel you can delete everything below this */
+.jcarousel-skin-pika .jcarousel-container-vertical { width: 125px;height: 245px; padding: 20px 20px 20px 85px;}
+.jcarousel-skin-pika .jcarousel-clip-vertical { width:  125px; height: 245px;}
+.jcarousel-skin-pika .jcarousel-item-vertical { margin-top: 10px;}

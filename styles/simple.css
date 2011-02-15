@@ -1,0 +1,16 @@
+body {font-family: helvetica, sans-serif;}
+a{color:white;}
+.pikachoose {width: 520px; margin: 0 auto;}
+
+.pika-wrap {width: 520px; margin: 0 auto;}
+.pika-image {position: relative; width: 500px;-moz-box-shadow: 10px 10px 5px #888;-webkit-box-shadow: 10px 10px 5px #888;box-shadow: 10px 10px 5px #888;
+	border:2px solid black;}
+	/*position image holders */
+	.pika-image .animation, .pika-image .main-image {position: absolute; top: 0px; left: 0px;}
+	.pika-image .animation {display: none;z-index:2;}
+	.pika-image img {border:0;}
+
+.pika-image .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; color: #fafafa; padding: 10px; text-align: right; bottom: 20px; right: 10px;}
+	.pika-image .caption p {padding: 0; margin: 0; line-height: 14px;}
+.pika-textnav, .pika-imgnav {display:none;}
+#pikame{display:none;}
