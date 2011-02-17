@@ -7,29 +7,10 @@
 		<script type="text/javascript" src="../../lib/jquery.pikachoose.js"></script>
 		<script type="text/javascript" src="../../lib/jquery.jcarousel.min.js"></script>
 		<script language="javascript">
-			<!--
 			$(document).ready(
 				function (){
-					$("#pikame").PikaChoose();
-
-					$("#pikame").jcarousel({					
-						initCallback: function(carousel) 
-						{
-					        $(carousel.list).find('img').click(function() {
-									var clicked = parseInt($(this).parents('.jcarousel-item').attr('jcarouselindex'));
-									var last = ($(this).parents('ul').find('li:last').index() == clicked-1) ? true : false;
-									if(!last){
-										clicked = (clicked-2<=0) ? 0 : clicked-2;
-									}
-									clicked++;
-					            carousel.scroll(clicked);
-					        });
-					    }
-				    });
-
+					$("#pikame").PikaChoose({carousel:true});
 				});
-				
-			-->
 		</script>
 
 		

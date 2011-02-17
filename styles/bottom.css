@@ -6,7 +6,7 @@
 body{font-family:Helvetica, sans-serif;}
 a{color:white;}
 .pikachoose {width: 520px; margin: 0 auto;}
-.pika-stage {position: relative;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px;text-align:center;height:250px;}
+.pika-stage {position: relative;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px 10px 40px 10px;text-align:center;height:250px;}
 	
 	/*if you change the padding on pika-stage you must adjust the top left of this to match! */
 	.pika-stage .main-image {position: absolute; top: 10px; left: 10px;}
