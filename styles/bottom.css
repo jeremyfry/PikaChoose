@@ -1,21 +1,23 @@
 /*if you just want to adjust the size of the stage and the thumbnails, you can do so by editing the following lines: */
 .pika-thumbs li{width: 144px; height:74px;}
-.pika-image {width: 500px;}
+.pika-stage {width: 500px;}
 
 
 body{font-family:Helvetica, sans-serif;}
 a{color:white;}
 .pikachoose {width: 520px; margin: 0 auto;}
-.pika-image {position: relative;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px;}
+.pika-stage {position: relative;background: #fafafa; border: 1px solid #e5e5e5; padding: 10px;text-align:center;height:250px;}
 	
-	/*if you change the padding on pika-image you must adjust the top left of this to match! */
-	.pika-image .animation, .pika-image .main-image {position: absolute; top: 10px; left: 10px;}
-	.pika-image .animation {display: none;z-index:2;}
-	.pika-image img {border:0;}
+	/*if you change the padding on pika-stage you must adjust the top left of this to match! */
+	.pika-stage .main-image {position: absolute; top: 10px; left: 10px;}
+	.pika-stage .pika-aniwrap{position: absolute; top: 10px; left: 0px;}
+	.pika-stage .pika-aniwrap{width:100%;}
+	.pika-stage .pika-ani {position:relative;display: none;z-index:2;margin:0 auto;}
+	.pika-stage img {border:0;height:100%;}
 
-.pika-image .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; 
+.pika-stage .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; 
 			color: #fafafa; padding: 10px; text-align: right; bottom: 50px; right: 10px;}
-	.pika-image .caption p {padding: 0; margin: 0; line-height: 14px;}
+	.pika-stage .caption p {padding: 0; margin: 0; line-height: 14px;}
 
 .pika-imgnav a {position: absolute; text-indent: -5000px; display: block;z-index:3;}
 	.pika-imgnav a.previous {background: url(prev.png) no-repeat left 45%; height: 100%; width: 50px; top: 10px; left: 10px;cursor:pointer;}

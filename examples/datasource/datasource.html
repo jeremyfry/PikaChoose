@@ -3,7 +3,7 @@
 	<head>
 		<link type="text/css" href="../../styles/bottom.css" rel="stylesheet" />
 		<script type="text/javascript" src="../../lib/jquery.js"></script>
-		<script type="text/javascript" src="../../lib/jquery.pikachoose.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.pikachoose.full.js"></script>
 		<script type="text/javascript" src="../../lib/jquery.jcarousel.min.js"></script>
 		<script language="javascript">
 			$(document).ready(
@@ -11,9 +11,9 @@
 					var a = [
 						{"image":"../../1.jpg","caption":"Caption 1","link":"http://pikachoose.com","title":"Image 1"},
 						{"image":"../../2.jpg","caption":"Caption 2","link":"http://pikachoose.com","title":"Image 2"},
-						{"image":"../../3.jpg","caption":"Caption 3","link":"http://pikachoose.com","title":"Image 3"}
+						{"image":"../../0.jpg","caption":"Caption 3","link":"http://pikachoose.com","title":"Image 3"}
 						];
-					$(".pikachoose").PikaChoose({data:a});
+					$(".pikachoose").PikaChoose({data:a,transition:[1]});
 				});
 		</script>
 </head>
