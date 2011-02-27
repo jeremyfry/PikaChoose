@@ -5,32 +5,10 @@
 		<link type="text/css" href="../../styles/left.css" rel="stylesheet" />
 		<script type="text/javascript" src="../../lib/jquery.js"></script>
 		<script type="text/javascript" src="../../lib/jquery.pikachoose.js"></script>
-		<script type="text/javascript" src="../../lib/jquery.jcarousel.min.js"></script>
 		<script language="javascript">
-			<!--
-			$(document).ready(
-				function (){
-					$("#pikame").PikaChoose();
-
-					$("#pikame").jcarousel({					
-						vertical: true,
-						initCallback: function(carousel) 
-						{
-					        $(carousel.list).find('img').click(function() {
-									var clicked = parseInt($(this).parents('.jcarousel-item').attr('jcarouselindex'));
-									var last = ($(this).parents('ul').find('li:last').index() == clicked-1) ? true : false;
-									if(!last){
-										clicked = (clicked-2<=0) ? 0 : clicked-2;
-									}
-									clicked++;
-					            carousel.scroll(clicked);
-					        });
-					    }
-				    });
-
+			$(document).ready(function (){
+					$("#pikame").PikaChoose({carousel:true, carouselVertical:true});
 				});
-				
-			-->
 		</script>
 
 		
@@ -38,7 +16,7 @@
 <body>
 <!-- not really needed, i'm using it to center the gallery. -->
 <div class="pikachoose">
-Basic example - with carousel
+Thumbs on left - with carousel
 	<ul id="pikame" class="jcarousel-skin-pika">
 		<li><a href="http://www.pikachoose.com"><img src="../../1.jpg"/></a><span>This is an example of the basic theme.</span></li>
 		<li><a href="http://www.pikachoose.com"><img src="../../2.jpg"/></a><span>jCarousel is supported and can be integrated with PikaChoose!</span></li>

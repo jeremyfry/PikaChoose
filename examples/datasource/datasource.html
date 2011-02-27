@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" href="../../styles/bottom.css" rel="stylesheet" />
+		<script type="text/javascript" src="../../lib/jquery.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.pikachoose.full.js"></script>
+		<script language="javascript">
+			$(document).ready(
+				function (){
+					var a = [
+						{"image":"../../1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 1"},
+						{"image":"../../2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
+						{"image":"../../3.jpg","caption":"You can use any type of html you want with PikaChoose","link":"http://pikachoose.com","title":"Image 3"},
+						];
+					$(".pikachoose").PikaChoose({data:a});
+				});
+		</script>
+</head>
+<body>
+<div class="pikachoose">
+	
+</div>
+
+</body>
+</html>
