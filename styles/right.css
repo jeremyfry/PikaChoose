@@ -41,6 +41,6 @@ a{color:white;}
 /* jCarousel Styles */
 /*if you're not using the carousel you can delete everything below this */
 .jcarousel-skin-pika{position:absolute;top:35px;right:20px;}
-.jcarousel-skin-pika .jcarousel-container-vertical { width: 125px;height: 230px;}
+.jcarousel-skin-pika .jcarousel-container-vertical { width: 125px;height: 230px; overflow:hidden;}
 .jcarousel-skin-pika .jcarousel-clip-vertical { width:  125px; height: 230px;}
 .jcarousel-skin-pika .jcarousel-item-vertical { margin-top: 10px;}
