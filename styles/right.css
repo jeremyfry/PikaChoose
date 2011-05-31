@@ -24,7 +24,7 @@ a{color:white;}
 	.pika-imgnav a.play {background: url(play.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display: none;cursor:pointer;}
 	.pika-imgnav a.pause {background: url(pause.png) no-repeat 0% 50%; height: 100px; width: 44px;top:0;left:50%;display:none;cursor:pointer;}
 
-.pika-textnav {overflow: hidden; margin: 10px 0 0 0;}
+.pika-textnav {overflow: hidden; margin: 10px 0 0 0;bottom:10px; position:absolute; width:500px;}
 .pika-textnav a {font-size: 12px; text-decoration: none; color: #333; padding: 4px;}
 	.pika-textnav a.previous {float: left; width: auto; display: block;}
 	.pika-textnav a.next {float: right; width: auto; display: block;}

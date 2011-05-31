@@ -17,7 +17,7 @@ a{color:white;}
 	.pika-imgnav a.play {background: url(../../assets/images/play.png) no-repeat 50% 50%; height: 100px; width: 40px;top:0;left:50%;display: none;cursor:pointer;}
 	.pika-imgnav a.pause {background: url(../../assets/images/pause.png) no-repeat 50% 50%; height: 100px; width: 40px;top:0;left:50%;display:none;cursor:pointer;}
 
-.pika-textnav {overflow: hidden; margin: 10px 0 0 0;}
+.pika-textnav {overflow: hidden; margin: 10px 0 0 0;bottom:10px; position:absolute; width:500px;}
 .pika-textnav a {font-size: 12px; text-decoration: none; font-family:  helvetica, arial, sans-serif; color: #333; padding: 4px;}
 		.pika-textnav a:hover {background: #e5e5e5; color: #0065B2;}
 	.pika-textnav a.previous {float: left; width: auto; display: block;}
