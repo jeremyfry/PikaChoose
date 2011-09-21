@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+		<link type="text/css" href="../../styles/bottom.css" rel="stylesheet" />
+		<script type="text/javascript" src=" https://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.js"></script>
+		<script type="text/javascript" src="../../lib/jquery.pikachoose.js"></script>
+		<script language="javascript">
+			$(document).ready(
+				function (){
+					$("#pikame").PikaChoose({carousel:true,carouselOptions:{wrap:'circular'}});
+				});
+		</script>
+
+</head>
+<body>
+<!-- not really needed, i'm using it to center the gallery. -->
+<div class="pikachoose">
+Basic example - with looping carousel
+	<ul id="pikame" class="jcarousel-skin-pika">
+		<li><a href="http://www.pikachoose.com"><img src="../../1.jpg"/></a><span>This is an example of the basic theme.</span></li>
+		<li><a href="http://www.pikachoose.com"><img src="../../2.jpg"/></a><span>jCarousel is supported and can be integrated with PikaChoose!</span></li>
+		<li><a href="http://www.pikachoose.com"><img src="../../3.jpg"/></a><span>Be sure to check out <a href="http://www.pikachoose.com">PikaChoose.com</a> for updates.</span></li>
+		<li><a href="http://www.pikachoose.com"><img src="../../4.jpg"/></a><span>You can use any type of html you want with PikaChoose</span></li>
+		<li><a href="http://www.pikachoose.com"><img src="../../5.jpg"/></a><span>PikaChoose survives on your donations! Keep the project alive with a donation.</span></li>
+	</ul>
+</div>
+
+</body>
+</html>
