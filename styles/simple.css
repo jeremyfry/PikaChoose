@@ -10,7 +10,7 @@ a{color:white;}
 	.pika-stage .pika-ani {position:relative;display: none;z-index:2;margin:0 auto;}
 	.pika-stage img {border:0;height:100%;}
 
-.pika-stage .caption {position: absolute; background: url(75-black.png);  border: 1px solid #141414; font-size: 11px; color: #fafafa; padding: 10px; text-align: right; bottom: 20px; right: 10px;}
+.pika-stage .caption {position: absolute; background:#000; background: rgba(0,0,0,0.75);  border: 1px solid #141414; font-size: 11px; color: #fafafa; padding: 10px; text-align: right; bottom: 20px; right: 10px;}
 	.pika-stage .caption p {padding: 0; margin: 0; line-height: 14px;}
 .pika-textnav, .pika-imgnav {display:none;}
 .pika-counter{position: absolute;bottom: -20px;left:15px;font-size:11px;}
