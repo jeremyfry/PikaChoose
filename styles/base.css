@@ -4,7 +4,7 @@ a{color:white;}
 .pikachoose {width: 520px; margin: 0 auto;}
 
 /* Style the thumbnails */
-.pika-thumbs{ padding: 0 16px;}
+.pika-thumbs{ padding: 0 16px; height: 75px; }
 	.pika-thumbs li{ width: 144px; height:74px; margin: 10px 0 0 17px; padding: 0; overflow: hidden;
 		float: left; list-style-type: none;padding: 3px; margin: 0 5px; background: #fafafa; border: 1px solid #e5e5e5; cursor: pointer;}
 	.pika-thumbs li:last {margin: 0;}
