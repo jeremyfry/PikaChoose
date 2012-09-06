@@ -7,8 +7,7 @@ a{color:white;}
 .pika-thumbs{ padding: 0 16px; height: 75px; }
 	.pika-thumbs li{ width: 144px; height:74px; margin: 10px 0 0 17px; padding: 0; overflow: hidden;
 		float: left; list-style-type: none;padding: 3px; margin: 0 5px; background: #fafafa; border: 1px solid #e5e5e5; cursor: pointer;}
-	.pika-thumbs li:last {margin: 0;}
-	.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: center; overflow: hidden;}
+	.pika-thumbs li .clip {position:relative;height:100%;text-align: center; vertical-align: middle; overflow: hidden;}
 	
 /* The stage is the wrapper. The image fills 100% the height of the stage */
 .pika-stage, .pika-textnav {width: 500px;}
