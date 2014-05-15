@@ -1,0 +1,11 @@
+{
+	"name": "PikaChoose",
+	"version": "5.0.0",
+	"main": "index.html",
+	"dependencies": {
+		"grunt-contrib-connect": "*",
+		"grunt-contrib-watch": "*",
+		"connect-livereload": "*",
+		"grunt-traceur": "*"
+	}
+}
