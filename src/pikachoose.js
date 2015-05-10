@@ -36,6 +36,7 @@
 	pikachoosePrototype.createdCallback = function() {
 		this.originalImages = this.querySelectorAll('img');
 		this.innerHTML = '';
+		this.activeImage = 0;
 
 		this.shadowRoot = this.createShadowRoot();
 		this.shadowRoot.appendChild(document.importNode(template, true));
@@ -58,7 +59,7 @@
 					link: image.getAttribute('data-link') || '',
 					caption: image.getAttribute('data-caption') || '',
 					title: image.getAttribute('title') || '',
-					linkTarget: image.getAttribute('data-link-target') || 'self'
+					linkTarget: image.getAttribute('data-link-target') || '_self'
 				});
 			}
 		}
@@ -76,14 +77,64 @@
 		this.stageContianer.appendChild(cloneNode);
 	}
 
+	pikachoosePrototype.forward = function(){
+		this.setActiveImage(this.activeImage+1);
+	}
+
+	pikachoosePrototype.backward = function(){
+		this.setActiveImage(this.activeImage-1);
+	}
+
+	pikachoosePrototype.setActiveImage = function(position){
+		this.activeImage = position;
+		if(this.activeImage < 0){
+			this.activeImage = this.originalImages.length -1
+		}
+		if(this.activeImage > this.originalImages.length -1){
+			this.activeImage = 0;
+		}
+		this.updateDisplay();
+	}
+
+	pikachoosePrototype.sizeImages = function(){
+		var clientWidth = this.clientWidth;
+		// Regrabbing images since I plan to add the option
+		[].forEach.call(this.stageContianer.querySelectorAll('figure'), function(element){
+			element.style.width = clientWidth+'px';
+		});
+	}
+
+	pikachoosePrototype.updateDisplay = function(){
+		this.setLeft(this.stageContianer, -(this.activeImage*this.clientWidth));
+		this.stageContianer.style.width = this.originalImages.length * this.clientWidth + 'px';
+	}
+
 	pikachoosePrototype.attachedCallback = function() {
-		var swipeEvent = "";
-		var input = this.shadowRoot.querySelector('pc-stage');
-		input.addEventListener(swipeEvent, function(){});
+		// Hack to allow the correct width to get returned
+		setTimeout(function(event) {
+			this.updateDisplay();
+		}.bind(this), 0);
+
+		this.addEventListener('forward', this.forward.bind(this));
+		this.addEventListener('backward', this.backward.bind(this));
+		this.shadowRoot.querySelector('pc-stage').addEventListener('click', this.forward.bind(this));
+
+		this.shadowRoot.querySelector('pc-thumbnails').addEventListener('click', function(e){
+			var element = e.target;
+			if(e.target.nodeName === 'IMG'){
+				element = e.target.parentNode;
+			}
+			this.setActiveImage([].indexOf.call(
+				this.shadowRoot.querySelectorAll('pc-thumbnail'),
+				element
+			));
+		}.bind(this));
 	};
 
-	pikachoosePrototype.detachedCallback = function() {
-	};
+	pikachoosePrototype.setLeft = function(element, left){
+		// TODO: more prefixes!
+		element.style.transform = 'translateX('+ left +'px)';
+	}
 
 	window.pikachoose = ownerDocument.registerElement('pikachoose-gallery', {
 		prototype: pikachoosePrototype

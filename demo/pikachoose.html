@@ -5,11 +5,71 @@
 		</pc-stage>
 		<pc-thumbnails></pc-thumbnails>
 	</div>
+	<style>
+		:host {
+  display: block;
+}
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+.pikachoose {
+  overflow: hidden;
+}
+pc-stage {
+  height: auto;
+  display: block;
+  background: #CCC;
+  position: relative;
+  transition: transform .3s;
+}
+pc-stage figure {
+  float: left;
+  position: relative;
+}
+pc-stage figcaption {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 5px 10px;
+  text-align: center;
+  font-family: sans-serif;
+}
+pc-stage figcaption:empty {
+  display: none;
+}
+a[href]:not([href=""]) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+pc-thumbnails {
+  display: inline-block;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+}
+pc-thumbnails pc-thumbnail {
+  width: 100px;
+  display: inline-block;
+}
+pc-thumbnails pc-thumbnail img {
+  width: 100%;
+}
+
+	</style>
 </template>
 <template id="thumbnail">
-	<pc-image>
+	<pc-thumbnail>
 		<image src="{{source}}">
-	</pc-image>
+	</pc-thumbnail>
 </template>
 <template id="mainImage">
 	<figure>
@@ -19,7 +79,7 @@
 	</figure>
 </template>
 <script>
-'use strict';
+ 	'use strict';
 (function (window, document, undefined) {
 	var ownerDocument = (document._currentScript || document.currentScript).ownerDocument;
 
@@ -57,6 +117,7 @@
 	pikachoosePrototype.createdCallback = function () {
 		this.originalImages = this.querySelectorAll('img');
 		this.innerHTML = '';
+		this.activeImage = 0;
 
 		this.shadowRoot = this.createShadowRoot();
 		this.shadowRoot.appendChild(document.importNode(template, true));
@@ -79,7 +140,7 @@
 					link: image.getAttribute('data-link') || '',
 					caption: image.getAttribute('data-caption') || '',
 					title: image.getAttribute('title') || '',
-					linkTarget: image.getAttribute('data-link-target') || 'self'
+					linkTarget: image.getAttribute('data-link-target') || '_self'
 				});
 			}
 		}
@@ -97,13 +158,61 @@
 		this.stageContianer.appendChild(cloneNode);
 	};
 
-	pikachoosePrototype.attachedCallback = function () {
-		var swipeEvent = '';
-		var input = this.shadowRoot.querySelector('pc-stage');
-		input.addEventListener(swipeEvent, function () {});
+	pikachoosePrototype.forward = function () {
+		this.setActiveImage(this.activeImage + 1);
 	};
 
-	pikachoosePrototype.detachedCallback = function () {};
+	pikachoosePrototype.backward = function () {
+		this.setActiveImage(this.activeImage - 1);
+	};
+
+	pikachoosePrototype.setActiveImage = function (position) {
+		this.activeImage = position;
+		if (this.activeImage < 0) {
+			this.activeImage = this.originalImages.length - 1;
+		}
+		if (this.activeImage > this.originalImages.length - 1) {
+			this.activeImage = 0;
+		}
+		this.updateDisplay();
+	};
+
+	pikachoosePrototype.sizeImages = function () {
+		var clientWidth = this.clientWidth;
+		// Regrabbing images since I plan to add the option
+		[].forEach.call(this.stageContianer.querySelectorAll('figure'), function (element) {
+			element.style.width = clientWidth + 'px';
+		});
+	};
+
+	pikachoosePrototype.updateDisplay = function () {
+		this.setLeft(this.stageContianer, -(this.activeImage * this.clientWidth));
+		this.stageContianer.style.width = this.originalImages.length * this.clientWidth + 'px';
+	};
+
+	pikachoosePrototype.attachedCallback = function () {
+		// Hack to allow the correct width to get returned
+		setTimeout((function (event) {
+			this.updateDisplay();
+		}).bind(this), 0);
+
+		this.addEventListener('forward', this.forward.bind(this));
+		this.addEventListener('backward', this.backward.bind(this));
+		this.shadowRoot.querySelector('pc-stage').addEventListener('click', this.forward.bind(this));
+
+		this.shadowRoot.querySelector('pc-thumbnails').addEventListener('click', (function (e) {
+			var element = e.target;
+			if (e.target.nodeName === 'IMG') {
+				element = e.target.parentNode;
+			}
+			this.setActiveImage([].indexOf.call(this.shadowRoot.querySelectorAll('pc-thumbnail'), element));
+		}).bind(this));
+	};
+
+	pikachoosePrototype.setLeft = function (element, left) {
+		// TODO: more prefixes!
+		element.style.transform = 'translateX(' + left + 'px)';
+	};
 
 	window.pikachoose = ownerDocument.registerElement('pikachoose-gallery', {
 		prototype: pikachoosePrototype

@@ -14,7 +14,7 @@ module.exports = function(grunt){
 		watch: {
 			client: {
 				files: ['src/**/*'],
-				tasks:['babel', 'replace'],
+				tasks:['babel', 'less', 'replace'],
 				options: {
 				  livereload:LIVERELOAD_PORT
 				}
@@ -35,17 +35,31 @@ module.exports = function(grunt){
 				src: ['src/pikachoose.html'],
 				dest: 'demo/',
 				replacements: [{
-					from: 'replaceme',
+					from: 'scriptReplacement',
 					to:  function(){
 						return grunt.file.read('tmp/pikachoose.js')
 					}
+				},
+				{
+					from: '(styleReplacement);', // it's ugly so syntax highlighting still works
+					to:  function(){
+						return grunt.file.read('tmp/pikachoose.css')
+					}
 				}]
 			}
+		},
+		less: {
+			default: {
+				files: {
+					"tmp/pikachoose.css": "src/pikachoose.less"
+				}
+			},
 		}
 	});
 	grunt.loadNpmTasks('grunt-contrib-connect');
 	grunt.loadNpmTasks('grunt-contrib-watch');
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-text-replace')
+	grunt.loadNpmTasks('grunt-contrib-less');
 	grunt.registerTask('default', ['connect:server','watch:client']);
 };

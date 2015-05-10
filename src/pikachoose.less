@@ -1,0 +1,67 @@
+:host{
+	display: block;
+}
+
+*{
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+.pikachoose{
+	overflow: hidden;
+}
+
+pc-stage{
+	height: auto;
+	display: block;
+	background: #CCC;
+	position: relative;
+	transition: transform .3s;
+}
+
+pc-stage figure{
+	float: left;
+	position: relative;
+}
+
+pc-stage figcaption{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	color: white;
+	background-color: rgba(0, 0, 0, 0.7);
+	padding: 5px 10px;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+pc-stage figcaption:empty{
+	display: none;
+}
+
+a[href]:not([href=""]){
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+pc-thumbnails{
+	display: inline-block;
+	left: 50%;
+	transform: translateX(-50%);
+	position: relative;
+}
+
+pc-thumbnails pc-thumbnail{
+	width: 100px;
+	display: inline-block;
+}
+
+pc-thumbnails pc-thumbnail img{
+	width: 100%;
+}
