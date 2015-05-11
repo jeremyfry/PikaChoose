@@ -2,3 +2,6 @@
 node_modules/
 dist/*
 tmp
+_SpecRunner.html
+.grunt
+.build

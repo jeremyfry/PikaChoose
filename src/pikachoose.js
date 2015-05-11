@@ -15,7 +15,7 @@
 	var pikachoosePrototype = Object.create(HTMLElement.prototype);
 
 	// Cheap template replacement
-	var simpleDomReplacement = function(template, replacements) {
+	pikachoosePrototype.simpleDomReplacement = function(template, replacements) {
 		var replacementKeys = Object.keys(replacements);
 		[].forEach.call(template.querySelectorAll('*'), function(element){
 			for(let j = 0; j < element.attributes.length; j++){
@@ -31,19 +31,6 @@
 				element.innerHTML = replacements[textContent];
 			}
 		});
-	};
-
-	pikachoosePrototype.createdCallback = function() {
-		this.originalImages = this.querySelectorAll('img');
-		this.innerHTML = '';
-		this.activeImage = 0;
-
-		this.shadowRoot = this.createShadowRoot();
-		this.shadowRoot.appendChild(document.importNode(template, true));
-		this.thumbnailContainer = this.shadowRoot.querySelector('pc-thumbnails');
-		this.stageContianer = this.shadowRoot.querySelector('pc-stage');
-
-		this.initialize();
 	};
 
 	pikachoosePrototype.initialize = function(){
@@ -67,13 +54,13 @@
 
 	pikachoosePrototype.addThumbnail = function(source){
 		var cloneNode = thumbnailTemplate.cloneNode(true);
-		simpleDomReplacement(cloneNode, source);
+		this.simpleDomReplacement(cloneNode, source);
 		this.thumbnailContainer.appendChild(cloneNode);
 	}
 
 	pikachoosePrototype.addGalleryItem = function(replacements){
 		var cloneNode = mainImageTemplate.cloneNode(true);
-		simpleDomReplacement(cloneNode, replacements);
+		this.simpleDomReplacement(cloneNode, replacements);
 		this.stageContianer.appendChild(cloneNode);
 	}
 
@@ -110,6 +97,17 @@
 	}
 
 	pikachoosePrototype.attachedCallback = function() {
+		this.originalImages = this.querySelectorAll('img');
+		this.innerHTML = '';
+		this.activeImage = 0;
+
+		this.createShadowRoot();
+		this.shadowRoot.appendChild(document.importNode(template, true));
+		this.thumbnailContainer = this.shadowRoot.querySelector('pc-thumbnails');
+		this.stageContianer = this.shadowRoot.querySelector('pc-stage');
+
+		this.initialize();
+
 		// Hack to allow the correct width to get returned
 		setTimeout(function(event) {
 			this.updateDisplay();

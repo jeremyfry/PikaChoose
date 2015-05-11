@@ -8,6 +8,14 @@ module.exports = function(grunt){
 		    options: {
 				port: 9000,
 				base:'demo'
+			}
+		},
+		test: {
+			options: {
+				port: 9001,
+				base:'.',
+				keepalive: true,
+				open: 'http://localhost:9001/_SpecRunner.html'
 		    }
 		  }
 		},
@@ -29,6 +37,13 @@ module.exports = function(grunt){
 					'tmp/pikachoose.js': 'src/pikachoose.js'
 				}
 			},
+		},
+		jasmine: {
+			// no source files will prevent phantom from running
+			options: {
+				keepRunner: true,
+				specs: 'spec/**/*.js'
+			}
 		},
 		replace: {
 			default: {
@@ -61,5 +76,7 @@ module.exports = function(grunt){
 	grunt.loadNpmTasks('grunt-babel');
 	grunt.loadNpmTasks('grunt-text-replace')
 	grunt.loadNpmTasks('grunt-contrib-less');
+	grunt.loadNpmTasks('grunt-contrib-jasmine');
+	grunt.registerTask('test', ['babel', 'less', 'replace', 'jasmine', 'connect:test']);
 	grunt.registerTask('default', ['connect:server','watch:client']);
 };
